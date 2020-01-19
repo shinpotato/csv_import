@@ -8,10 +8,9 @@ class ImportCsv < ApplicationRecord
     require 'csv'
     CSV.foreach(path) do |row|
       User.create(
-
+        name: row[0],
         age: row[1],
-        address: row[2],
-        name: row[0]
+        address: row[2]
       )
     end
   end
@@ -20,10 +19,9 @@ class ImportCsv < ApplicationRecord
     require 'csv'
     CSV.foreach(path, headers: true) do |row|
       User.create(
-
+        name: row["name"],
         age: row["age"],
-        address: row["address"],
-        name: row["name"]
+        address: row["address"]
       )
     end
   end
